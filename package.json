@@ -1,0 +1,75 @@
+{
+  "name": "modern-portfolio",
+  "version": "1.0.1",
+  "private": true,
+  "author": {
+    "name": "Sanidhya Kumar Verma",
+    "email": "dev@example.com",
+    "url": "https://github.com/sanidhyy"
+  },
+  "description": "Alex Johnson is a Full-stack web developer with 10+ years of experience.",
+  "keywords": [
+    "react",
+    "next",
+    "nextjs",
+    "html",
+    "css",
+    "javascript",
+    "js",
+    "modern-ui",
+    "modern-ux",
+    "portfolio",
+    "framer-motion",
+    "3d-website",
+    "particle-effect"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanidhyy/modern-portfolio.git"
+  },
+  "homepage": "https://github.com/mscbuild#readme",
+  "bugs": {
+    "url": "https://github.com/sanidhyy/modern-portfolio/issues",
+    "email": "dev@example.com"
+  },
+  "funding": [
+    {
+      "type": "patreon",
+      "url": "https://github.com/sanidhyy"
+    },
+    {
+      "type": "Buy me a coffee",
+      "url": "https://github.com/sanidhyy"
+    }
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "^13.4.4",
+    "@vercel/speed-insights": "^1.2.0",
+    "framer-motion": "^10.12.16",
+    "next": "^15.5.7",
+    "or": "^0.2.0",
+    "react": "^19.1.1",
+    "react-countup": "^6.4.2",
+    "react-dom": "^19.1.1",
+    "react-icons": "^4.8.0",
+    "react-tsparticles": "^2.9.3",
+    "sharp": "^0.34.3",
+    "swiper": "^9.4.0",
+    "tailwind-scrollbar": "^3.0.4",
+    "tsparticles": "^2.9.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.41.0",
+    "eslint-config-next": "^15.5.7",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2"
+  }
+}
