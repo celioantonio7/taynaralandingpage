@@ -103,8 +103,8 @@ const SplashScreen = ({ onComplete }) => {
                 {/* Lado Esquerdo: Taynara e Especialista */}
                 <div className="flex flex-col items-end mr-4 md:mr-6">
                   <div className="text-2xl md:text-4xl font-bold tracking-widest text-white">
-                    <span className="text-accent">T</span>aynara&nbsp;
-                    <span className="text-accent">L</span>eal
+                    <span className="text-[#CBA135]">T</span>aynara&nbsp;
+                    <span className="text-[#CBA135]">L</span>eal
                   </div>
                   <div className="text-accent text-[10px] md:text-sm tracking-[0.4em] uppercase mt-2">
                     Especialista

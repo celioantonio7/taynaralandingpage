@@ -17,7 +17,7 @@ const Header = () => {
           {/* logo */}
           <Link href="/">
             <div className="text-3xl font-bold tracking-tight text-white">
-              <span className="text-accent">T</span>aynara <span className="text-accent">L</span><span className="font-light">eal.</span>
+              <span className="text-[#CBA135]">T</span>aynara <span className="text-[#CBA135]">L</span><span className="font-light">eal.</span>
             </div>
           </Link>
 
