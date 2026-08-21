@@ -3,16 +3,13 @@ import { motion } from "framer-motion";
 const Transition = () => {
   const transitionVariants = {
     initial: {
-      x: "100%",
-      width: "100%",
+      scaleX: 1,
     },
     animate: {
-      x: "0%",
-      width: "0%",
+      scaleX: 0,
     },
     exit: {
-      x: ["0%", "100%"],
-      width: ["0%", "100%"],
+      scaleX: 1,
     },
   };
 
@@ -20,7 +17,7 @@ const Transition = () => {
     <>
       <motion.div
         role="status"
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-30 bg-[#131424]"
+        className="fixed top-0 bottom-0 left-0 w-screen h-screen z-30 bg-[#131424] origin-left"
         variants={transitionVariants}
         initial="initial"
         animate="animate"
@@ -30,7 +27,7 @@ const Transition = () => {
       />
       <motion.div
         role="status"
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-20 bg-[#F13024]"
+        className="fixed top-0 bottom-0 left-0 w-screen h-screen z-20 bg-[#F13024] origin-left"
         variants={transitionVariants}
         initial="initial"
         animate="animate"
@@ -40,7 +37,7 @@ const Transition = () => {
       />
       <motion.div
         role="status"
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-10 bg-[#CBA135]"
+        className="fixed top-0 bottom-0 left-0 w-screen h-screen z-10 bg-[#CBA135] origin-left"
         variants={transitionVariants}
         initial="initial"
         animate="animate"

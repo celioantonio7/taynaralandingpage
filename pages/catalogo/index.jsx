@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, FreeMode } from "swiper";
 import { BsArrowRight } from "react-icons/bs";
 import { RiCloseLine } from "react-icons/ri";
-import { HiChevronRight } from "react-icons/hi2";
+import { HiChevronRight, HiChevronUp } from "react-icons/hi2";
 import ParticlesContainer from "../../components/ParticlesContainer";
 import dynamic from "next/dynamic";
 
@@ -784,22 +784,65 @@ const workData = [
 const Work = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [isReady, setIsReady] = useState(false);
   const router = useRouter();
   const containerRef = useRef(null);
 
   useEffect(() => {
+    // Atrasar a renderização de componentes pesados para evitar travamento na animação de transição
+    const timer = setTimeout(() => setIsReady(true), 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    let touchStartY = 0;
+    let touchStartX = 0;
+    let isNavigating = false;
+
+    // Prefetch a página inicial para navegação mais rápida
+    router.prefetch("/");
+
     const handleWheel = (e) => {
-      if (e.deltaY < -50) {
-        router.push("/");
+      if (e.deltaY < -50 && !isNavigating) {
+        isNavigating = true;
+        setTimeout(() => {
+          router.push("/");
+        }, 100);
       }
     };
+
+    const handleTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = (e) => {
+      const touchEndY = e.changedTouches[0].clientY;
+      const touchEndX = e.changedTouches[0].clientX;
+      
+      const deltaY = touchEndY - touchStartY;
+      const deltaX = Math.abs(touchEndX - touchStartX);
+
+      // Só navega se o swipe for predominantemente vertical (para cima) e longo o suficiente
+      if (deltaY > 50 && deltaY > deltaX && !isNavigating) {
+        isNavigating = true;
+        setTimeout(() => {
+          router.push("/");
+        }, 100);
+      }
+    };
+
     const container = containerRef.current;
     if (container) {
       container.addEventListener("wheel", handleWheel);
+      container.addEventListener("touchstart", handleTouchStart, { passive: true });
+      container.addEventListener("touchend", handleTouchEnd, { passive: true });
     }
     return () => {
       if (container) {
         container.removeEventListener("wheel", handleWheel);
+        container.removeEventListener("touchstart", handleTouchStart);
+        container.removeEventListener("touchend", handleTouchEnd);
       }
     };
   }, [router]);
@@ -818,18 +861,35 @@ const Work = () => {
       </div>
 
       <Circles />
+
+      {/* Voltar ao Início Button / Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+        className="absolute top-[95px] md:top-[110px] inset-x-0 mx-auto w-max z-[40] flex flex-col items-center opacity-70 hover:opacity-100 cursor-pointer transition-opacity"
+        onClick={() => router.push("/")}
+      >
+        <HiChevronUp className="text-2xl text-accent animate-bounce" />
+        <span className="text-[10px] md:text-[11px] uppercase tracking-widest text-white/80 font-medium md:font-semibold">
+          Voltar ao Início
+        </span>
+      </motion.div>
+
       <div className="container mx-auto h-full flex flex-col justify-start relative z-10 pt-16 xl:pt-16">
         <div className="flex flex-col w-full flex-1 pb-4">
           {/* Scrollable Tabs Menu Fixed at Top */}
-          <div className="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl cursor-grab active:cursor-grabbing bg-white/10 backdrop-blur-lg rounded-full px-4 py-3 xl:px-8 xl:py-4 border border-white/20 shadow-2xl z-50 shrink-0">
-              <Swiper
-                slidesPerView="auto"
-                spaceBetween={24}
-                freeMode={true}
-                loop={true}
-                modules={[FreeMode]}
-                className="w-full"
-              >
+          <div className="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl cursor-grab active:cursor-grabbing bg-white/10 backdrop-blur-lg rounded-full px-4 py-3 xl:px-8 xl:py-4 border border-white/20 shadow-2xl z-50 shrink-0 min-h-[50px]">
+            {isReady && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                <Swiper
+                  slidesPerView="auto"
+                  spaceBetween={24}
+                  freeMode={true}
+                  loop={true}
+                  modules={[FreeMode]}
+                  className="w-full"
+                >
                 {workData.map((tab, idx) => (
                   <SwiperSlide key={idx} style={{ width: 'auto' }}>
                     <div
@@ -864,6 +924,8 @@ const Work = () => {
               <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#131424]/80 to-transparent flex items-center justify-end pr-4 pointer-events-none rounded-r-full z-10 backdrop-blur-sm">
                 <HiChevronRight className="text-white text-2xl animate-pulse" />
               </div>
+              </motion.div>
+            )}
             </div>
 
             {/* Slider Content */}
@@ -885,11 +947,19 @@ const Work = () => {
 
               {workData[tabIndex].items.length > 0 ? (
                   <div className="w-full h-[60vh] sm:h-[70vh] max-w-5xl mx-auto flex items-center justify-center mt-4">
-                    <CoverflowCarousel
-                      slides={workData[tabIndex].items}
-                      onItemSelect={(item) => setSelectedItem(item)}
-                      cardWidth="clamp(250px, 30vw, 350px)"
-                    />
+                    {isReady ? (
+                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="w-full h-full">
+                        <CoverflowCarousel
+                          slides={workData[tabIndex].items}
+                          onItemSelect={(item) => setSelectedItem(item)}
+                          cardWidth="clamp(250px, 30vw, 350px)"
+                        />
+                      </motion.div>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-10 h-10 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
+                      </div>
+                    )}
                   </div>
               ) : (
                 <div className="flex items-center justify-center h-full border border-white/10 rounded-lg text-white/50 bg-white/5">
