@@ -14,11 +14,17 @@ const Home = () => {
 
   useEffect(() => {
     let touchStartY = 0;
+    let isNavigating = false;
+
+    // Prefetch the catalog route so it's loaded instantly when the user scrolls
+    router.prefetch("/catalogo");
 
     const handleWheel = (e) => {
-      if (e.deltaY > 50) {
-        // Scroll down threshold
-        router.push("/catalogo");
+      if (e.deltaY > 50 && !isNavigating) {
+        isNavigating = true;
+        setTimeout(() => {
+          router.push("/catalogo");
+        }, 100);
       }
     };
 
@@ -28,9 +34,11 @@ const Home = () => {
 
     const handleTouchEnd = (e) => {
       const touchEndY = e.changedTouches[0].clientY;
-      // Se o usuário deslizar para cima (scroll down) mais de 50px
-      if (touchStartY - touchEndY > 50) {
-        router.push("/catalogo");
+      if (touchStartY - touchEndY > 50 && !isNavigating) {
+        isNavigating = true;
+        setTimeout(() => {
+          router.push("/catalogo");
+        }, 100);
       }
     };
 

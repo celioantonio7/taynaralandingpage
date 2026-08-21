@@ -6,6 +6,7 @@ import Nav from "../components/Nav";
 
 import { FaWhatsapp } from "react-icons/fa";
 import { getWhatsAppLink } from "./Socials";
+import ScrollToTop from "./ScrollToTop";
 
 // setup font
 const sora = Sora({
@@ -49,13 +50,14 @@ const Layout = ({ children }) => {
           e.preventDefault();
           window.open(getWhatsAppLink(), "_blank");
         }}
-        className="fixed bottom-6 right-4 xl:right-auto xl:left-8 z-[100] bg-[#25D366] text-white p-3 xl:p-5 rounded-full shadow-lg hover:scale-110 hover:shadow-[#25D366]/50 transition-all duration-300 flex items-center justify-center group"
+        className="fixed bottom-10 right-6 xl:right-10 xl:bottom-16 z-[200] bg-[#25D366] text-white p-4 xl:p-5 rounded-full shadow-lg hover:scale-110 hover:shadow-[#25D366]/50 transition-all duration-300 flex items-center justify-center group"
       >
         <FaWhatsapp className="text-3xl xl:text-4xl" />
-        <span className="absolute right-14 xl:right-auto xl:left-20 bg-black/80 text-white text-sm px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">
+        <span className="absolute right-full mr-4 bg-black/80 text-white text-sm px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">
           Fale comigo
         </span>
       </a>
+      <ScrollToTop />
     </main>
   );
 };

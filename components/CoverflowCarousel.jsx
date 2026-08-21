@@ -211,7 +211,7 @@ export function CoverflowCarousel({
           <div
             className="relative select-none mx-auto"
             style={{
-              height: "calc(var(--cf-card) * 1.2)",
+              height: "calc(var(--cf-card) * 1.1)",
               transformStyle: "preserve-3d",
             }}
           >
@@ -235,7 +235,7 @@ export function CoverflowCarousel({
                 className={`absolute left-1/2 top-0 overflow-hidden rounded-2xl bg-[#1a1a2e] border border-white/10 shadow-2xl will-change-transform cursor-pointer transition-colors ${
                   selected === index ? "ring-2 ring-accent" : ""
                 } ${cardClassName}`}
-                style={{ width: "var(--cf-card)", height: "calc(var(--cf-card) * 1.2)" }}
+                style={{ width: "var(--cf-card)", height: "calc(var(--cf-card) * 1.1)" }}
               >
                 <div className="w-full h-[50%] relative bg-black/50">
                   <Image
@@ -246,13 +246,13 @@ export function CoverflowCarousel({
                     className="select-none object-contain p-2"
                   />
                 </div>
-                <div className="w-full h-[50%] p-4 flex flex-col justify-center bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                  <p className="text-white font-semibold text-[15px] leading-tight line-clamp-2">{item.title}</p>
-                  <p className="text-accent text-sm mt-1 mb-1 font-bold">{item.price}</p>
+                <div className="w-full h-[50%] p-3 xl:p-4 flex flex-col justify-center bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                  <p className="text-white font-semibold text-[13px] xl:text-[15px] leading-tight line-clamp-5">{item.title}</p>
+                  <p className="text-accent text-[12px] xl:text-sm mt-1 mb-1 font-bold">{item.price}</p>
                   
                   {/* Botão Ver Detalhes (aparece apenas no card selecionado) */}
-                  <div className={`mt-2 transition-all duration-300 overflow-hidden ${selected === index ? 'max-h-10 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <button className="text-[11px] uppercase tracking-widest text-white/80 hover:text-white bg-white/10 hover:bg-white/20 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10 transition-colors w-max">
+                  <div className={`mt-1 xl:mt-2 transition-all duration-300 overflow-hidden ${selected === index ? 'max-h-10 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <button className="text-[10px] xl:text-[11px] uppercase tracking-widest text-white/80 hover:text-white bg-white/10 hover:bg-white/20 px-3 py-1 xl:px-4 xl:py-1.5 rounded-full backdrop-blur-md border border-white/10 transition-colors w-max">
                       Ver Informações
                     </button>
                   </div>

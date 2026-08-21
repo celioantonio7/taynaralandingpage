@@ -10,13 +10,21 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    if (!sessionStorage.getItem('hasVisited')) {
+      setIsLoading(true);
+    }
+  }, []);
   return (
     <>
       <AnimatePresence>
         {isLoading && (
-          <SplashScreen onComplete={() => setIsLoading(false)} />
+          <SplashScreen onComplete={() => {
+            setIsLoading(false);
+            sessionStorage.setItem('hasVisited', 'true');
+          }} />
         )}
       </AnimatePresence>
 

@@ -8,7 +8,12 @@ import { BsArrowRight } from "react-icons/bs";
 import { RiCloseLine } from "react-icons/ri";
 import { HiChevronRight } from "react-icons/hi2";
 import ParticlesContainer from "../../components/ParticlesContainer";
-import { CoverflowCarousel } from "../../components/CoverflowCarousel";
+import dynamic from "next/dynamic";
+
+const CoverflowCarousel = dynamic(
+  () => import("../../components/CoverflowCarousel").then((mod) => mod.CoverflowCarousel),
+  { ssr: false }
+);
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -452,7 +457,7 @@ const workData = [
   {
     category: "EVO SKIN",
     subtitle: "PPF — Película de Proteção de Pintura",
-    description: "10 anos de garantia. A linha Evo Skin preserva a aparência original do veículo contra riscos, impactos leves, manchas e agentes externos. Alta transparência, proteção hidrofóbica e tecnologia auto regenerativa, que corrige pequenos riscos mantendo o carro com aparência de novo.",
+    description: "10 anos de garantia. Protege contra riscos, impactos e manchas. Tecnologia auto regenerativa mantém aspecto de novo.",
     items: [
       {
         image: "/evoramaxx.png", // placeholder
@@ -879,7 +884,7 @@ const Work = () => {
               )}
 
               {workData[tabIndex].items.length > 0 ? (
-                  <div className="w-full h-[60vh] max-w-5xl mx-auto flex items-center justify-center">
+                  <div className="w-full h-[60vh] sm:h-[70vh] max-w-5xl mx-auto flex items-center justify-center mt-4">
                     <CoverflowCarousel
                       slides={workData[tabIndex].items}
                       onItemSelect={(item) => setSelectedItem(item)}
