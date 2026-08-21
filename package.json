@@ -1,13 +1,13 @@
 {
-  "name": "modern-portfolio",
+  "name": "landingpagetaynara",
   "version": "1.0.1",
   "private": true,
   "author": {
-    "name": "Sanidhya Kumar Verma",
-    "email": "dev@example.com",
-    "url": "https://github.com/sanidhyy"
+    "name": "Celio Junior",
+    "email": "[EMAIL_ADDRESS]",
+    "url": "https://github.com/celioantonio7"
   },
-  "description": "Alex Johnson is a Full-stack web developer with 10+ years of experience.",
+  "description": "Landing Page Taynara",
   "keywords": [
     "react",
     "next",
@@ -26,21 +26,21 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sanidhyy/modern-portfolio.git"
+    "url": "https://github.com/celioantonio7/landingpagetaynara.git"
   },
-  "homepage": "https://github.com/mscbuild#readme",
+  "homepage": "https://github.com/celioantonio7/landingpagetaynara",
   "bugs": {
-    "url": "https://github.com/sanidhyy/modern-portfolio/issues",
-    "email": "dev@example.com"
+    "url": "https://github.com/celioantonio7/landingpagetaynara/issues",
+    "email": "celioantonio.dev@gmail.com"
   },
   "funding": [
     {
       "type": "patreon",
-      "url": "https://github.com/sanidhyy"
+      "url": "https://github.com/celioantonio7"
     },
     {
       "type": "Buy me a coffee",
-      "url": "https://github.com/sanidhyy"
+      "url": "https://github.com/celioantonio7"
     }
   ],
   "scripts": {
@@ -52,7 +52,7 @@
   "dependencies": {
     "@next/font": "^13.4.4",
     "@vercel/speed-insights": "^1.2.0",
-    "framer-motion": "^10.12.16",
+    "framer-motion": "^13.1.1",
     "next": "^15.5.7",
     "or": "^0.2.0",
     "react": "^19.1.1",
