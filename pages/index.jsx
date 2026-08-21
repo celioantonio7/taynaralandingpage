@@ -83,7 +83,7 @@ const Home = () => {
             exit="hidden"
             className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 text-white/80 leading-relaxed"
           >
-            Sou <span className="font-bold text-white">Taynara Lemes</span>, especialista em proteção e estética automotiva pela Evoramaxx.
+            Sou <span className="font-bold text-white">Taynara Leal</span>, especialista em proteção e estética automotiva pela Evoramaxx.
             Navegue pelo nosso catálogo e encontre os melhores acessórios e películas para o seu carro,
             com instalação impecável e garantia de qualidade.
           </motion.p>

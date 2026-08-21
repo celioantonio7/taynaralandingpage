@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
     >
       {/* metadata */}
       <Head>
-        <title>Taynara Lemes | Consultora Evoramaxx</title>
+        <title>Taynara Leal | Consultora Evoramaxx</title>
         <meta
           name="description"
           content="Especialista em proteção e estética automotiva pela Evoramaxx. Catálogo completo de películas e acessórios."

@@ -11,7 +11,7 @@ const Avatar = ({ src = "/taynara-no-bg.png" }) => {
 
         <Image
           src={src}
-          alt="Taynara Lemes Leal – Consultora Evoramaxx"
+          alt="Taynara Leal – Consultora Evoramaxx"
           width={737}
           height={678}
           className="translate-z-0 w-[90%] h-auto object-contain relative z-10 translate-y-6"

@@ -106,7 +106,7 @@ const SplashScreen = ({ onComplete }) => {
                     <span className="text-[#CBA135]">T</span>aynara&nbsp;
                     <span className="text-[#CBA135]">L</span>eal
                   </div>
-                  <div className="text-accent text-[10px] md:text-sm tracking-[0.4em] uppercase mt-2">
+                  <div className="text-[#CBA135] text-[10px] md:text-sm tracking-[0.4em] uppercase mt-2">
                     Especialista
                   </div>
                 </div>
